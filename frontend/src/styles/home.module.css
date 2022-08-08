@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    background-image: url(../imgs/imgonline-com-ua-ReplaceColor-Inv9jWXijRPCVUV.jpg);
+    background-size: cover;
+}
+.cal {
+    width: 100%;
+    background-color: #fff;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 1rem;
+}
+.cal:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+.titlegroup {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+.titlegroup i {
+    font-size: .7rem;
+    font-weight: lighter;
+}
+.title {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #725ac1;
+}
+.logcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.loggroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border-bottom: .01rem solid rgba(114, 90, 193, .4);
+}
+.logdate {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+.logexercise {
+    line-height: 1.1rem;
+    margin-bottom: .6rem;
+}
+.logexercisetitle {
+    font-size: .8rem;
+    font-weight: bold;
+}
+.logentry {
+    font-size: .8rem;
+}
+.logadd {
+    border-radius: 1rem;
+    border: none;
+    background: #725ac1;
+    color: #fff;
+    padding: .5rem 1.5rem;
+    text-decoration: none;
+    font-weight: lighter;
+    margin-bottom: .5rem;
+}
+.form input[type=text] {
+    width: 100%;
+    padding: .6rem 1rem;
+    margin: .1rem 0;
+    box-sizing: border-box;
+    border: .1rem solid #725ac1;
+    border-radius: 1rem;
+}
+.dropbtn {
+    cursor: pointer;
+    font-size: rem;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdowncontent {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 2.5rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
+    z-index: 1;
+    border-radius: 1rem;
+}
+.dropdowncontent button {
+    color: #252525;
+    padding: .2rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-size: .8rem;
+}
+.dropdowncontent button:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+i {
+    font-size: 0.5rem;
+}

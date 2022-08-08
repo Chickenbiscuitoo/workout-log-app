@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 20px;
+}
+@media(max-width: 2000) {
+    html {
+    font-size: 30px;
+}
+}@media(max-width: 930px) {
+    html {
+    font-size: 15px;
+}
+}@media(max-width: 690) {
+    html {
+    font-size: 12px;
+}
+}@media(max-width: 430) {
+    html {
+    font-size: 10px;
+}
+}@media(max-width: 400px) {
+    html {
+    font-size: 8px;
+}
+}
+
+html, body {
+    height: 99%;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.container {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    flex: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.content .title {
+    color: #725ac1;
+    font-weight: bolder;
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+.content .text {
+    color: #252525;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+.imgcontainer {
+    flex: 2;
+    display: flex;
+}
+.imgcontainer img {
+    width: 15rem;
+    margin: auto;
+}
+.btn {
+    border-radius: 1rem;
+    border: solid .2rem #fff;
+    background: #725ac1;
+    color: #fff;
+    padding: .8rem 2.5rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.btn:hover {
+    cursor:  pointer;
+}
