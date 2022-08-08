@@ -1,0 +1,24 @@
+{
+	"name": "workout-log-app",
+	"version": "1.0.0",
+	"description": "App to log your workouts and progress",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server",
+		"server": "nodemon server"
+	},
+	"author": "Chickenbiscuito",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"date-fns": "^2.29.1",
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
+		"express-validator": "^6.14.2",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.5.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.19"
+	}
+}
