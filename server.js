@@ -2,11 +2,20 @@ const express = require('express')
 const connectDB = require('./config/db')
 const path = require('path')
 const dotenv = require('dotenv').config()
+const cors = require('cors')
 
 const app = express()
 
 // Connect Database
 connectDB()
+
+// CORS Middleware
+app.use(
+	cors({
+		origin: 'http://localhost:3000',
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+	})
+)
 
 // Middleware
 app.use(express.json())
