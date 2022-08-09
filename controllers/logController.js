@@ -85,7 +85,7 @@ const getThisWeekLogs = async (req, res) => {
 			},
 		})
 
-		res.json(logs)
+		res.status(200).json(logs)
 	} catch (error) {
 		console.log(error)
 		return res.status(401).send('Bad request')
@@ -105,7 +105,7 @@ const getPrevWeekLogs = async (req, res) => {
 			},
 		})
 
-		res.json(logs)
+		res.status(200).json(logs)
 	} catch (error) {
 		console.log(error)
 		return res.status(401).send('Bad request')
