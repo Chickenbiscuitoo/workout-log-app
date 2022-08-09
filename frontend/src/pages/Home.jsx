@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/home.module.css'
-import { FaPencilAlt } from 'react-icons/fa'
+import Dropdown from '../components/Dropdown'
 
 function Home() {
+	const [exerciseToLog, setExerciseToLog] = useState('')
+
+	const handleAddItem = (name) => {
+		setExerciseToLog(name)
+	}
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.cal}>
@@ -166,25 +172,16 @@ function Home() {
 					<div className={styles.loggroup}>
 						<span className={styles.titlegroup}>
 							<h6 className={styles.logdate}>02/08/2022</h6>
-							<div className={styles.dropdown}>
-								<i>
-									<FaPencilAlt />
-								</i>
-								<div className={styles.dropdowncontent}>
-									<button>Bench</button>
-									<button>Squat</button>
-									<button>Deadlift</button>
-								</div>
-							</div>
+							<Dropdown
+								menuItems={['bench', 'squat', 'deadlift']}
+								handleAddItem={handleAddItem}
+							/>
 						</span>
 						<span className={styles.logexercise}>
 							<span className={styles.titlegroup}>
 								<h5 className={styles.logexercisetitle}>
 									Bench
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>85x3</p>
 							<p className={styles.logentry}>80x6</p>
@@ -196,9 +193,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									Weighted Pull Ups
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>185x3</p>
 							<p className={styles.logentry}>180x6</p>
@@ -210,9 +204,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									French Press
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>285x3</p>
 							<p className={styles.logentry}>280x6</p>
@@ -223,25 +214,15 @@ function Home() {
 					<div className={styles.loggroup}>
 						<span className={styles.titlegroup}>
 							<h6 className={styles.logdate}>02/08/2022</h6>
-							<div className={styles.dropdown}>
-								<i>
-									<FaPencilAlt />
-								</i>
-								<div className={styles.dropdowncontent}>
-									<button>Bench</button>
-									<button>Squat</button>
-									<button>Deadlift</button>
-								</div>
-							</div>
+							<Dropdown
+								menuItems={['bench', 'squat', 'deadlift']}
+							/>
 						</span>
 						<span className={styles.logexercise}>
 							<span className={styles.titlegroup}>
 								<h5 className={styles.logexercisetitle}>
 									OHP
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>85x3</p>
 							<p className={styles.logentry}>80x6</p>
@@ -253,9 +234,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									Squat
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>185x3</p>
 							<p className={styles.logentry}>180x6</p>
@@ -267,9 +245,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									Deadlift
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>285x3</p>
 							<p className={styles.logentry}>280x6</p>
@@ -280,25 +255,15 @@ function Home() {
 					<div className={styles.loggroup}>
 						<span className={styles.titlegroup}>
 							<h6 className={styles.logdate}>02/08/2022</h6>
-							<div className={styles.dropdown}>
-								<i>
-									<FaPencilAlt />
-								</i>
-								<div className={styles.dropdowncontent}>
-									<button>Bench</button>
-									<button>Squat</button>
-									<button>Deadlift</button>
-								</div>
-							</div>
+							<Dropdown
+								menuItems={['bench', 'squat', 'deadlift']}
+							/>
 						</span>
 						<span className={styles.logexercise}>
 							<span className={styles.titlegroup}>
 								<h5 className={styles.logexercisetitle}>
 									Bench
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>85x3</p>
 							<p className={styles.logentry}>80x6</p>
@@ -310,9 +275,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									Bench
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>185x3</p>
 							<p className={styles.logentry}>180x6</p>
@@ -324,9 +286,6 @@ function Home() {
 								<h5 className={styles.logexercisetitle}>
 									Bench
 								</h5>
-								<i>
-									<FaPencilAlt />
-								</i>
 							</span>
 							<p className={styles.logentry}>285x3</p>
 							<p className={styles.logentry}>280x6</p>
