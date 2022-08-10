@@ -83,6 +83,13 @@
     font-size: 1rem;
     border: none;
   }
+
+.dropbtnsecondary {
+    background-color: transparent;
+    color: #725ac1;
+    font-size: 0.7rem;
+    border: none;
+}
   
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
@@ -101,6 +108,8 @@
     z-index: 1;
     justify-content: center;
     align-items: center;
+    border-radius: 1rem;
+
   }
   
   /* Links inside the dropdown */
@@ -121,6 +130,40 @@
 .dropdowncontent button:hover {
     background-color: rgb(114, 90, 193);
     color: white;
+}
+
+.dropdowncontentinput {
+    border-radius: 1rem;
+    border: #725ac1 solid 0.1rem;
+    margin: 0.3rem;
+    padding: 0.2rem;
+    padding-left: 1rem;
+}
+
+.dropdowncontentlog {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .8);
+    min-width: 2rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    gap: 0.2rem;
+}
+
+.dropdowncontentinputlog {
+    border-radius: 1rem;
+    border: #725ac1 solid 0.1rem;
+    width: 3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    padding: 0.2rem;
+    text-align: center;
 }
 
 .btnlogout {

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import styles from '../styles/home.module.css'
-import { useNavigate } from 'react-router-dom'
-import PrevLogItem from './PrevLogItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPrevLogs, reset } from '../features/logs/logSlice'
+import PrevLogGroup from './PrevLogGroup'
+import Spinner from './Spinner'
 
 function PrevWeekLog() {
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
+	const [logDates, setLogDates] = useState([])
 
-	const { user } = useSelector((state) => state.auth)
-	const { logs, isError, isSuccess, isLoading, message } = useSelector(
+	const dispatch = useDispatch()
+	const { prevLogs, isError, isLoading, message } = useSelector(
 		(state) => state.log
 	)
 
@@ -19,146 +19,39 @@ function PrevWeekLog() {
 			console.log(message)
 		}
 
-		if (!user) {
-			navigate('/login')
-		}
-
 		dispatch(getPrevLogs())
 
 		return () => {
 			dispatch(reset())
 		}
-	}, [user, navigate, isError, message, dispatch])
+	}, [isError, message, dispatch])
 
-	console.log(logs)
+	useEffect(() => {
+		let allDates = []
+		prevLogs.map((log) => {
+			return allDates.push(log.createdAt.slice(0, 10))
+		})
+		let uniqueDates = [...new Set(allDates)]
+		setLogDates(uniqueDates)
+	}, [prevLogs])
+
+	const logGroups = logDates.map((date) => {
+		const filteredLogs = prevLogs.filter(
+			(log) => log.createdAt.slice(0, 10) === date
+		)
+		return (
+			<PrevLogGroup key={uuidv4()} date={date} logs={filteredLogs} />
+		)
+	})
+
+	if (isLoading) {
+		return <Spinner />
+	}
 
 	return (
 		<div className={styles.cal}>
 			<h2 className={styles.title}>Previous Week Log</h2>
-			<div className={styles.logcontainer}>
-				<PrevLogItem
-					date="08/07/2022"
-					exercise="Deadlift"
-					sets={[
-						{ weight: 220, reps: 3 },
-						{ weight: 200, reps: 3 },
-						{ weight: 180, reps: 3 },
-						{ weight: 180, reps: 3 },
-					]}
-				/>
-				<div className={styles.loggroup}>
-					<h6 className={styles.logdate}>02/08/2022</h6>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>OHP</h5>
-						<p className={styles.logentry}>85x3</p>
-						<p className={styles.logentry}>80x6</p>
-						<p className={styles.logentry}>80x4</p>
-						<p className={styles.logentry}>80x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							French Press
-						</h5>
-						<p className={styles.logentry}>185x3</p>
-						<p className={styles.logentry}>180x6</p>
-						<p className={styles.logentry}>180x4</p>
-						<p className={styles.logentry}>180x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							Weighted Pull Ups
-						</h5>
-						<p className={styles.logentry}>285x3</p>
-						<p className={styles.logentry}>280x6</p>
-						<p className={styles.logentry}>280x4</p>
-						<p className={styles.logentry}>280x2</p>
-					</span>
-				</div>
-				<div className={styles.loggroup}>
-					<h6 className={styles.logdate}>03/08/2022</h6>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>OHP</h5>
-						<p className={styles.logentry}>85x3</p>
-						<p className={styles.logentry}>80x6</p>
-						<p className={styles.logentry}>80x4</p>
-						<p className={styles.logentry}>80x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							French Press
-						</h5>
-						<p className={styles.logentry}>185x3</p>
-						<p className={styles.logentry}>180x6</p>
-						<p className={styles.logentry}>180x4</p>
-						<p className={styles.logentry}>180x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							Weighted Pull Ups
-						</h5>
-						<p className={styles.logentry}>285x3</p>
-						<p className={styles.logentry}>280x6</p>
-						<p className={styles.logentry}>280x4</p>
-						<p className={styles.logentry}>280x2</p>
-					</span>
-				</div>
-				<div className={styles.loggroup}>
-					<h6 className={styles.logdate}>04/08/2022</h6>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>OHP</h5>
-						<p className={styles.logentry}>85x3</p>
-						<p className={styles.logentry}>80x6</p>
-						<p className={styles.logentry}>80x4</p>
-						<p className={styles.logentry}>80x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							French Press
-						</h5>
-						<p className={styles.logentry}>185x3</p>
-						<p className={styles.logentry}>180x6</p>
-						<p className={styles.logentry}>180x4</p>
-						<p className={styles.logentry}>180x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							Weighted Pull Ups
-						</h5>
-						<p className={styles.logentry}>285x3</p>
-						<p className={styles.logentry}>280x6</p>
-						<p className={styles.logentry}>280x4</p>
-						<p className={styles.logentry}>280x2</p>
-					</span>
-				</div>
-				<div className={styles.loggroup}>
-					<h6 className={styles.logdate}>05/08/2022</h6>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>OHP</h5>
-						<p className={styles.logentry}>85x3</p>
-						<p className={styles.logentry}>80x6</p>
-						<p className={styles.logentry}>80x4</p>
-						<p className={styles.logentry}>80x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							French Press
-						</h5>
-						<p className={styles.logentry}>185x3</p>
-						<p className={styles.logentry}>180x6</p>
-						<p className={styles.logentry}>180x4</p>
-						<p className={styles.logentry}>180x2</p>
-					</span>
-					<span className={styles.logexercise}>
-						<h5 className={styles.logexercisetitle}>
-							Weighted Pull Ups
-						</h5>
-						<p className={styles.logentry}>285x3</p>
-						<p className={styles.logentry}>280x6</p>
-						<p className={styles.logentry}>280x4</p>
-						<p className={styles.logentry}>280x2</p>
-					</span>
-				</div>
-			</div>
+			<div className={styles.logcontainer}>{logGroups}</div>
 		</div>
 	)
 }

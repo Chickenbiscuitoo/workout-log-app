@@ -37,7 +37,7 @@ const createLog = async (req, res) => {
 
 		return res.json(log)
 	} catch (error) {
-		console.error(err.message)
+		console.log(error.message)
 		return res.status(500).send('Server Error')
 	}
 }
@@ -49,13 +49,17 @@ const updateLog = async (req, res) => {
 	try {
 		const log = await Log.findByIdAndUpdate(
 			req.params.logId,
-			req.body,
+			{
+				$push: {
+					sets: req.body,
+				},
+			},
 			{ new: true }
 		)
 		return res.json(log)
 	} catch (err) {
-		console.error(err.message)
-		return res.status(500).send('Server Error')
+		console.log(error.message)
+		return res.status(500).json({ message: error.message })
 	}
 }
 
@@ -65,10 +69,10 @@ const updateLog = async (req, res) => {
 const deleteLog = async (req, res) => {
 	try {
 		const log = await Log.findByIdAndRemove(req.params.logId)
-		res.status(200).json(log)
+		res.status(200).json(log.id)
 	} catch (error) {
-		console.error(err.message)
-		return res.status(401).send('Bad request')
+		console.log(error.message)
+		return res.status(401).json({ message: 'Bad requst' })
 	}
 }
 
